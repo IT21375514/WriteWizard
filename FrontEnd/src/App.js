@@ -25,7 +25,7 @@
 
 
 // App.jsx
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DashboardLayout from "./pages/DashboardLayout"; // Adjust path as needed
 import Home from "./pages/Home";
@@ -42,21 +42,6 @@ import LoadingScreen from "./pages/LoadingScreen";
 import { UserProvider } from "./context/UserContext";
 
 function App() {
-  const [authLoading, setAuthLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    // Simulate async auth check; replace with your actual logic.
-    const token = localStorage.getItem("token");
-    setIsAuthenticated(!!token);
-    setAuthLoading(false);
-  }, []);
-
-  if (authLoading) {
-    // Render a loading screen or nothing while auth is loading
-    return <div>Loading auth...</div>;
-  }
-
   return (
     <UserProvider>
       <Router>
@@ -70,9 +55,8 @@ function App() {
           {/* Protected routes using the DashboardLayout */}
           <Route
             element={
-              <ProtectedRoute authLoading={authLoading} isAuthenticated={isAuthenticated}>
-                  {/* Your protected routes */}
-                  <DashboardLayout />
+              <ProtectedRoute>
+                <DashboardLayout />
               </ProtectedRoute>
             }
           >
