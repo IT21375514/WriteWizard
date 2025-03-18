@@ -962,8 +962,8 @@ const MindmapModal = ({ show, onClose, selectedText }) => {
         }
         const mindmapRoot = data;
         // Clear previous data
-        nodes = [];
-        links = [];
+        nodesRef.current = [];
+        linksRef.current = [];
         mindmapRoot.mindmap.forEach((mindmapNode) => {
           traverseMindmap(mindmapNode, null);
         });
@@ -1052,8 +1052,8 @@ const MindmapModal = ({ show, onClose, selectedText }) => {
         }
         const mindmapRoot = data;
         // Clear previous data
-        nodes = [];
-        links = [];
+        nodesRef.current = [];
+        linksRef.current = [];
         mindmapRoot.mindmap.forEach((mindmapNode) => {
           traverseMindmap(mindmapNode, null);
         });
