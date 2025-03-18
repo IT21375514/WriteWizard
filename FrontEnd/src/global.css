@@ -1,7 +1,7 @@
 /* global.css */
 
 /* Common */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
   --primary-color: #56008a;
@@ -10,37 +10,41 @@
   --fourth-color: #fffade;
 }
 
-/* index.css or global.css */
+/* Global styles */
 body {
-    margin: 0;
-    font-family: "Open Sans", serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: "Roboto Condensed", serif;
-    font-weight: 400;
-  }
-
-/* Use Header Font */
-.header-font{
-    font-family: "Roboto Condensed", serif;
-    font-weight: 400;
-}  
-
-/* Primary button */
-.primary-button {
-  font-family: "Roboto Condensed", serif!important;
-  background-color: var(--primary-color) !important;
-  color: #fff !important;
-  position: relative!important;
-  overflow: hidden!important;
-  border: none!important;
-  z-index: 0!important;
+  margin: 0;
+  font-family: "Open Sans", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Create a pseudo-element for the hover effect */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto Condensed", serif;
+  font-weight: 400;
+}
+
+/* Use Header Font */
+.header-font {
+  font-family: "Roboto Condensed", serif;
+  font-weight: 400;
+}
+
+/* Primary Button */
+.primary-button {
+  font-family: "Roboto Condensed", serif !important;
+  background-color: var(--primary-color) !important;
+  color: #fff !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border: none !important;
+  z-index: 0 !important;
+}
+
 .primary-button::before {
   content: "";
   position: absolute;
@@ -53,14 +57,12 @@ body {
   z-index: -1;
 }
 
-/* On hover, slide the pseudo-element from left to right */
 .primary-button:hover::before {
   transform: translateX(100%);
 }
 
 /* Shandeep */
 
-/* Ensure this file is linked after Bootstrap in your project */
 /* Ensure this file is linked after Bootstrap in your project */
 .editor-container {
   background: linear-gradient(135deg, #f5f5f5, var(--tertiary-color));
@@ -79,14 +81,14 @@ body {
   transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Add a hover effect */
 .paper-section:hover {
   transform: scale(1.01);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Input fields */
-.input-field, .textarea-field {
+/* Input Fields */
+.input-field,
+.textarea-field {
   width: 100%;
   font-size: 1rem;
   font-weight: bold;
@@ -97,8 +99,8 @@ body {
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Focus effect for input and textarea */
-.input-field:focus, .textarea-field:focus {
+.input-field:focus,
+.textarea-field:focus {
   border-color: var(--primary-color);
   box-shadow: 0px 0px 8px rgba(86, 0, 138, 0.3);
   outline: none;
@@ -139,55 +141,55 @@ body {
   background-color: var(--secondary-color);
 }
 
+/* Sub-section */
 .sub-section {
   border: 1px solid var(--primary-color);
   border-radius: 12px;
   background: white;
   padding: 10px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, padding 0.3s ease-in-out, height 0.3s ease-in-out;
-   /* Default height */
- /* Prevents content overflow */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
+    padding 0.3s ease-in-out, height 0.3s ease-in-out;
 }
 
-/* Editor Container */
+/* Editor Container (Override) */
 .editor-container {
   background-color: var(--tertiary-color);
   padding: 20px;
   border-radius: 10px;
-  
   border: 1px solid #ccc;
   transition: all 0.3s ease-in-out;
-
 }
 
 /* When editor is focused, add subtle effects */
-/* .editor-container:focus-within {
+/* 
+.editor-container:focus-within {
   border-color: var(--primary-color);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
 } */
 
-/* QL Editor Text Styling */
-/* Base Styling */
+/* 🔥 When the Editor is Focused - Increase height when typing
+.editor-container .ql-container.ql-snow:focus-within {
+  min-height: 400px;
+  transition: height 0.3s ease-in-out;
+}
+*/
+
+/* QL Editor Text Styling - Base */
 .editor-container.ql-container.ql-snow {
-  min-height: 360px;  /* Default height */
-  max-height: 800px;  /* Prevent excessive height */
+  min-height: 360px;
+  max-height: 800px;
   height: auto;
-  overflow-y: auto; /* Enable scrolling for long content */
+  overflow-y: auto;
   border: 1px solid #ccc;
   border-radius: 10px;
-  transition: height 0.3s ease-in-out; /* Smooth height transition */
+  transition: height 0.3s ease-in-out;
   padding: 15px;
   background: var(--tertiary-color);
 }
 
-/* 🔥 When the Editor is Focused */
-/* .editor-container.ql-container.ql-snow:focus-within {
-  min-height: 400px;  /* Increase height when typing */
-  /* transition: height 0.3s ease-in-out; */
- */
-
-/* 🔥 Scrollbar Styling for Overflow */ 
-/* .editor-container.ql-container.ql-snow::-webkit-scrollbar {
+/* Scrollbar Styling for Overflow */
+/* 
+.editor-container.ql-container.ql-snow::-webkit-scrollbar {
   width: 6px;
 } */
 .editor-container.ql-container.ql-snow::-webkit-scrollbar-thumb {
@@ -197,13 +199,14 @@ body {
 
 .editor-container.ql-container.ql-snow::-webkit-scrollbar-track {
   background: #f0f0f0;
-} 
+}
 
 .form-check-input:checked {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
 }
-/* 🔥 Quill Editor Inside */
+
+/* Quill Editor Inner */
 .ql-editor {
   min-height: 380px;
   font-size: 1rem;
@@ -211,13 +214,11 @@ body {
   padding: 10px;
 }
 
-
-/* Placeholder Text */
 .ql-editor p {
   margin-bottom: 10px;
 }
 
-/* 🔥 Formula Styling */
+/* Formula Styling */
 .ql-formula-with-caption {
   text-align: center;
   margin: 20px 0;
@@ -235,7 +236,22 @@ body {
   margin-top: 5px;
 }
 
-/* 🔥 Table Styling */
+/* Table Styling in QL Editor */
+.ql-editor table,
+.ql-editor th,
+.ql-editor td {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  padding: 6px;
+  min-width: 40px;
+}
+
+.ql-editor table {
+  width: auto;
+  margin-bottom: 16px;
+}
+
+/* Table with Caption */
 .ql-table-with-caption {
   text-align: center;
   margin: 20px 0;
@@ -261,7 +277,7 @@ body {
   margin-top: 5px;
 }
 
-/* 🔥 Image Styling */
+/* Image Styling */
 .ql-image-with-caption {
   text-align: center;
   margin: 20px 0;
@@ -286,7 +302,7 @@ body {
   margin-top: 5px;
 }
 
-/* 🔥 Quill Tooltip Styling */
+/* Quill Tooltip Styling */
 .ql-tooltip {
   background-color: var(--primary-color);
   color: white;
@@ -299,21 +315,21 @@ body {
 }
 
 /* When typing inside a subsection, expand without excessive height increase */
-.editor-container ql-container ql-snow:focus-within {
-  transform: scale(1.1); /* Slight enlargement, not too big */
+.editor-container .ql-container.ql-snow:focus-within {
+  transform: scale(1.1);
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
   padding: 15px;
-  height: 400px; /* Expand to a controlled height */
+  height: 400px;
 }
 
-.sub-section:hover{
- 
+/* Sub-section Hover */
+.sub-section:hover {
   transform: scale(1.01);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-
 }
 
-.ql-toolbar ql-snow{
+/* QL Toolbar Styling */
+.ql-toolbar .ql-snow {
   border-radius: 10px;
 }
 
@@ -355,7 +371,6 @@ body {
   transition: border-color 0.3s ease-in-out;
 }
 
-/* Focus effect */
 .input-small:focus {
   border-color: var(--primary-color);
   box-shadow: 0px 0px 6px rgba(86, 0, 138, 0.2);
@@ -375,29 +390,9 @@ body {
   transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-/* Hover effect */
 .remove-button:hover {
   background: darkred;
   transform: scale(1.05);
-}
-
-/* Tables inside the editor */
-.ql-editor table,
-.ql-editor th,
-.ql-editor td {
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-}
-
-.ql-editor th,
-.ql-editor td {
-  padding: 8px;
-  min-width: 40px;
-}
-
-.ql-editor table {
-  width: auto;
-  margin-bottom: 16px;
 }
 
 /* Table Picker */
@@ -410,40 +405,7 @@ body {
   z-index: 1000;
 }
 
-/*-------------------------------------------------------------------------------------------*/
-.ql-editor table,
-.ql-editor th,
-.ql-editor td {
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-}
-.ql-editor th,
-.ql-editor td {
-  padding: 6px;
-  min-width: 40px;
-}
-.ql-editor table {
-  width: auto;
-  margin-bottom: 16px;
-}
-
-/* .ql-Table-Input .ql-picker-options {
-  display: block !important;
-  position: absolute;
-  left: 0;
-  top: 100%;
-  background: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  padding: 4px 0;
-  z-index: 100;
-} */
-
-.ql-Table-Input .ql-picker-options {
-  display: none;
-}
-
-/* Only show them when the parent picker is expanded */
+/* QL Table Input Picker Options */
 /* Hide table picker options by default */
 .ql-Table-Input .ql-picker-options {
   display: none;
@@ -463,10 +425,10 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   padding: 4px 0;
   z-index: 100;
-  width: 150px; /* adjust width as needed */
+  width: 150px;
 }
 
-/* Style each dropdown item */
+/* Style each dropdown item in table picker */
 .ql-Table-Input.ql-expanded .ql-picker-options .ql-picker-item {
   display: block;
   padding: 5px 10px;
@@ -474,11 +436,9 @@ body {
   transition: background 0.2s ease;
 }
 
-/* Hover effect for each option */
 .ql-Table-Input.ql-expanded .ql-picker-options .ql-picker-item:hover {
   background: #f0f0f0;
 }
-
 
 /* Krithi */
 .scrollbar-hidden::-webkit-scrollbar {
@@ -488,15 +448,15 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 /* Saara */
 
 /* Sanjayan */
-
-.running-text h6{
-  line-height:unset;
+.running-text h6 {
+  line-height: unset;
 }
 
-.mindmap-textarea-intro-container{
+.mindmap-textarea-intro-container {
   background-color: var(--primary-color);
   color: #fff;
   padding: 0.5rem 2rem;
@@ -508,29 +468,31 @@ body {
   width: 100%;
 }
 
-/* Textarea styling (already in your code) */
+/* Textarea styling */
 .mindmap-textarea {
   width: 100%;
   resize: vertical;
-  padding: 1rem!important;
-  padding-bottom: 3rem!important; 
+  padding: 1rem !important;
+  padding-bottom: 3rem !important;
   box-sizing: border-box;
-  border: 1px solid var(--secondary-color)!important;
+  border: 1px solid var(--secondary-color) !important;
 }
 
-/* Absolutely position the "Generate" button inside .mindmap-textarea-container */
+/* Absolutely position the "Generate" button */
 .mindmap-generate-button {
-  position: absolute!important;
+  position: absolute !important;
   bottom: 1rem;
   right: 1rem;
 }
 
-.form-select:focus, .form-control:focus, .mindmap-custom-focus:focus {
+.form-select:focus,
+.form-control:focus,
+.mindmap-custom-focus:focus {
   border-color: var(--secondary-color) !important;
-  box-shadow: 0 0 0 0.25rem rgba(162,135,176,0.25)!important;
+  box-shadow: 0 0 0 0.25rem rgba(162, 135, 176, 0.25) !important;
 }
 
-/* A modern style with dashed border, box-shadow, and subtle hover effect */
+/* Drag & Drop Container */
 .drag-drop-container {
   position: relative;
   border: 2px dashed var(--secondary-color);
@@ -541,21 +503,20 @@ body {
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-/* On hover, subtly change background or shadow for a modern effect */
 .drag-drop-container:hover {
-  box-shadow: 0 16px 16px  rgba(162,135,176,0.25)!important;
+  box-shadow: 0 16px 16px rgba(162, 135, 176, 0.25) !important;
 }
 
-/* Optional: Style adjustments for the dropdown */
+/* Dropdown Menu */
 .dropdown-menu {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 0.25rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.mindmap-small-text{
-  font-size: 0.8rem; 
+.mindmap-small-text {
+  font-size: 0.8rem;
 }
 
 .mindmap-loading-container {
@@ -580,22 +541,23 @@ body {
   right: 0;
   bottom: 0;
   background: rgba(255, 255, 255, 0.5);
-  pointer-events: none; /* allow interactions to pass through */
+  pointer-events: none;
 }
 
 .lottie-container {
   transform: scale(0.5);
-  transform-origin: left; /* Default for laptops */
+  transform-origin: left;
 }
 
 @media (max-width: 768px) {
   .lottie-container {
     transform: scale(1);
-    transform-origin: center; /* For mobile devices */
+    transform-origin: center;
   }
 }
 
-.form-control, .form-select{
+.form-control,
+.form-select {
   font-family: "Open Sans", serif;
-  font-size: 0.9rem!important;
+  font-size: 0.9rem !important;
 }
