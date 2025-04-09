@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  backend:
+    image: sanjayan201/writewizard-backend:latest
+    container_name: writewizard-backend
+    build:
+      context: ./BackEnd
+    env_file:
+      - ./BackEnd/.env
+    ports:
+      - "4001:4000"
+    restart: always
+
+  frontend:
+    image: sanjayan201/writewizard-frontend:latest
+    container_name: writewizard-frontend
+    build:
+      context: ./FrontEnd
+    ports:
+      - "8080:80"
+    restart: always

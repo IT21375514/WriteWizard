@@ -145,8 +145,6 @@ body {
   background: white;
   padding: 10px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, padding 0.3s ease-in-out, height 0.3s ease-in-out;
-   /* Default height */
- /* Prevents content overflow */
 }
 
 /* Editor Container */
@@ -179,12 +177,6 @@ body {
   padding: 15px;
   background: var(--tertiary-color);
 }
-
-/* 🔥 When the Editor is Focused */
-/* .editor-container.ql-container.ql-snow:focus-within {
-  min-height: 400px;  /* Increase height when typing */
-  /* transition: height 0.3s ease-in-out; */
- */
 
 /* 🔥 Scrollbar Styling for Overflow */ 
 /* .editor-container.ql-container.ql-snow::-webkit-scrollbar {
