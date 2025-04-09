@@ -5,6 +5,7 @@ const SubsectionSchema = new mongoose.Schema({
   title: String,
   contentId: String,
   content: { type: Object, default: { ops: [] } },
+  aiEnhancement: { type: Boolean, default: false },
 });
 
 const SectionSchema = new mongoose.Schema({
@@ -13,6 +14,8 @@ const SectionSchema = new mongoose.Schema({
   contentId: String,
   content: { type: Object, default: { ops: [] } },
   subsections: [SubsectionSchema],
+  aiEnhancement: { type: Boolean, default: false },
+  tags: { type: [String], default: [] },
 });
 
 
@@ -29,7 +32,16 @@ const ReferenceSchema = new mongoose.Schema({
   citation: String,
 });
 
-
+const ContributorSchema = new mongoose.Schema({
+  id: String,
+  name: String,
+  affiliation: String,
+  email: String,
+  position: { type: String, default: "" },
+  about: { type: String, default: "" },
+  bio: { type: String, default: "" },
+  profilePicture: { type: String, default: "" }, // Store profile picture URL
+});
 
 const PadSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -44,6 +56,7 @@ const PadSchema = new mongoose.Schema({
     name: String,
     affiliation: String,
     email: String,
+    bio: String,
   }],
   references: [ReferenceSchema]
 }, {

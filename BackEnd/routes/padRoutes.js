@@ -150,4 +150,97 @@ router.post("/uploads", upload.single("image"), (req, res) => {
   res.json({ url: imageUrl });
 });
 
+// Get image-description pairs from a pad by padId
+// In padRoutes.js
+router.get("/:padId/images", async (req, res) => {
+  try {
+    const pad = await Pad.findById(req.params.padId);
+    if (!pad) return res.status(404).json({ msg: "Pad not found" });
+
+    let imagePairs = [];
+    // Loop through sections and subsections to extract images:
+    pad.sections.forEach((section) => {
+      if (section.content && section.content.ops) {
+        section.content.ops.forEach((op) => {
+          if (op.insert && op.insert.imageWithCaption) {
+            imagePairs.push({
+              image_url: op.insert.imageWithCaption.src,
+              image_description: op.insert.imageWithCaption.caption,
+            });
+          }
+        });
+      }
+      if (section.subsections) {
+        section.subsections.forEach((sub) => {
+          if (sub.content && sub.content.ops) {
+            sub.content.ops.forEach((op) => {
+              if (op.insert && op.insert.imageWithCaption) {
+                imagePairs.push({
+                  image_url: op.insert.imageWithCaption.src,
+                  image_description: op.insert.imageWithCaption.caption,
+                });
+              }
+            });
+          }
+        });
+      }
+    });
+
+    res.json({ imagePairs });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: "Server error" });
+  }
+});
+
+// POST /api/pads/:padId/save-citation
+router.post("/:padId/save-citation", async (req, res) => {
+  try {
+    const { padId } = req.params;
+    const { citation, author, title, journal, year, volume, number, pages } = req.body;
+
+    const pad = await Pad.findById(padId).exec();
+    if (!pad) {
+      return res.status(404).json({ error: "Pad not found" });
+    }
+
+    const refId = `ref-${Date.now()}`;
+
+    let nextKeyNumber = 1;
+    if (pad.references.length > 0) {
+      const numericKeys = pad.references
+        .map((ref) => parseInt(ref.key, 10)) 
+        .filter((num) => !isNaN(num));       
+      if (numericKeys.length > 0) {
+        nextKeyNumber = Math.max(...numericKeys) + 1;
+      }
+    }
+
+    const newRef = {
+      id: refId,
+      key: nextKeyNumber.toString(),
+      author: author || "Unknown Author",
+      title: title || "Unknown Title",
+      journal: journal || "Unknown Journal",
+      year: year || "Unknown Year",
+      volume: volume || "N/A",
+      number: number || "N/A",
+      pages: pages || "N/A",
+      citation, 
+    };
+
+    pad.references.push(newRef);
+    await pad.save();
+
+    return res.json({
+      message: "Citation saved successfully",
+      reference: newRef, 
+      references: pad.references,  
+    });
+  } catch (error) {
+    console.error("❌ Error saving citation:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 module.exports = router;
