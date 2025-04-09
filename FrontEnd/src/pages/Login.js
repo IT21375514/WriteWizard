@@ -89,12 +89,12 @@ const Login = () => {
           </div>
         </div>
       </div> 
-    <div>
+    {/* <div>
       <h2>Login</h2>
       <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
       <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
       <button onClick={login}>Login</button>
-    </div>
+    </div> */}
 
     </>
   );
